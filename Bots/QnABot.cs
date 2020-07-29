@@ -37,13 +37,15 @@ namespace Microsoft.BotBuilderSamples.Bots
             // Run the Dialog with the new message Activity.
             await Dialog.RunAsync(turnContext, ConversationState.CreateProperty<DialogState>(nameof(DialogState)), cancellationToken);
 
+
+        //TODO: Can check if we can use cards to display welcome msg
         protected override async Task OnMembersAddedAsync(IList<ChannelAccount> membersAdded, ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken)
         {
             foreach (var member in membersAdded)
             {
                 if (member.Id != turnContext.Activity.Recipient.Id)
                 {
-                    await turnContext.SendActivityAsync(MessageFactory.Text($"Hello and welcome!"), cancellationToken);
+                    await turnContext.SendActivityAsync(MessageFactory.Text($"Welcome to Edubuddy!\n You can interact with it or search your favorite videos/images/web from bing\n. Prefix search query with w or v or i for web, video and image search respectively"), cancellationToken);
                 }
             }
         }
