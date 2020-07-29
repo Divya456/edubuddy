@@ -47,15 +47,7 @@ namespace Microsoft.BotBuilderSamples.Dialog
             var query = stepContext.Context.Activity.Text;
             string searchType = query.Substring(0, 2);
             var bingSearch = new BingSearch(stepContext.Context);
-            string subscriptionKey = "9898d5f83c2d4b0cbbba7aa993680038";
-            try
-            {
-                var subsKey = configuration.GetValue<string>("BingSearchKey");
-            }
-            catch(Exception ex)
-            {
-                throw new Exception("bing key could not be retrieved");
-            }
+             string subscriptionKey = configuration.GetValue<string>("BingSearchKey");
             
             switch (searchType)
             {
