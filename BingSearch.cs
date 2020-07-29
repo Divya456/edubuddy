@@ -31,7 +31,7 @@ namespace QnABot
                 if (webResults != null)
                 {
                     
-                    await context.SendActivityAsync("Searching for " + query);
+                    await context.SendActivityAsync("Searching in web for " + query);
                     await context.SendActivityAsync(webResults.WebPages.Value[0].Url);
                     await context.SendActivityAsync(webResults.WebPages.Value[1].Url);
                 }
@@ -56,7 +56,7 @@ namespace QnABot
                         new Attachment{ContentUrl=imageResults.Value[1].ContentUrl,ContentType="image/png"},
                         new Attachment{ContentUrl=imageResults.Value[2].ContentUrl,ContentType="image/png"}
                     });
-                    await context.SendActivityAsync("Searching for " + query);
+                    await context.SendActivityAsync("Searching for images related to " + query);
                     await context.SendActivityAsync(activity);
                 }
             }
@@ -81,7 +81,7 @@ namespace QnABot
                         new Attachment { ContentUrl = videoResults.Value[1].ContentUrl, ContentType = "video/mp4" },
                         new Attachment { ContentUrl = videoResults.Value[2].ContentUrl, ContentType = "video/mp4" }
                     });
-                    await context.SendActivityAsync("Searching for " + query);
+                    await context.SendActivityAsync("Searching for videos related to " + query);
                     await context.SendActivityAsync(activity);
                 }
                 
